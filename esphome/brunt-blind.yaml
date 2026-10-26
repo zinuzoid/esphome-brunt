@@ -55,7 +55,5 @@ cover:
     stop_latency: 100ms     # raise if it stops past the target, lower if it stops short
     motor_load:
       name: Blind motor load
-      disabled_by_default: true
     encoder:
       name: Blind encoder
-      disabled_by_default: true

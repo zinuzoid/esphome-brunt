@@ -4,6 +4,7 @@ from esphome import pins
 from esphome.components import cover, sensor, uart
 from esphome.const import (
     CONF_ID,
+    ENTITY_CATEGORY_DIAGNOSTIC,
     STATE_CLASS_MEASUREMENT,
 )
 
@@ -34,10 +35,14 @@ CONFIG_SCHEMA = (
             cv.Optional(CONF_PRESS_DURATION, default="200ms"): cv.positive_time_period_milliseconds,
             cv.Optional(CONF_STOP_LATENCY, default="100ms"): cv.positive_time_period_milliseconds,
             cv.Optional(CONF_MOTOR_LOAD): sensor.sensor_schema(
-                accuracy_decimals=0, state_class=STATE_CLASS_MEASUREMENT
+                accuracy_decimals=0,
+                state_class=STATE_CLASS_MEASUREMENT,
+                entity_category=ENTITY_CATEGORY_DIAGNOSTIC,
             ),
             cv.Optional(CONF_ENCODER): sensor.sensor_schema(
-                accuracy_decimals=0, state_class=STATE_CLASS_MEASUREMENT
+                accuracy_decimals=0,
+                state_class=STATE_CLASS_MEASUREMENT,
+                entity_category=ENTITY_CATEGORY_DIAGNOSTIC,
             ),
         }
     )
