@@ -25,7 +25,7 @@ wifi:
 external_components:
   - source:
       type: local
-      path: components
+      path: ../components
 
 uart:
   id: stm32_status

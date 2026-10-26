@@ -7,11 +7,11 @@ ESPHOME ?= esphome
 test: $(SIM)
 	./$(SIM) $(CAPTURE)
 
-$(SIM): test/sim.cpp esphome/components/brunt/brunt_cover.cpp esphome/components/brunt/brunt_cover.h $(wildcard test/mock/esphome/*/*.h test/mock/esphome/*/*/*.h)
+$(SIM): test/sim.cpp components/brunt/brunt_cover.cpp components/brunt/brunt_cover.h $(wildcard test/mock/esphome/*/*.h test/mock/esphome/*/*/*.h)
 	@mkdir -p build
 	g++ -std=c++17 -Wall -Wextra -g -fsanitize=address,undefined \
-	  -Itest/mock -Iesphome/components/brunt \
-	  test/sim.cpp esphome/components/brunt/brunt_cover.cpp -o $@
+	  -Itest/mock -Icomponents/brunt \
+	  test/sim.cpp components/brunt/brunt_cover.cpp -o $@
 
 config:
 	cd esphome && $(ESPHOME) config brunt-blind.yaml

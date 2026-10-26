@@ -30,7 +30,7 @@ deeper reverse engineering is ever needed).
 Done:
 * Protocol framing, CRC and the status frame are fully decoded (`docs/protocol.md`), and
   verified on 149 + 101 real frames.
-* `esphome/components/brunt/` is a cover platform: it parses status, publishes position and
+* `components/brunt/` is a cover platform: it parses status, publishes position and
   operation, has optional motor-load and encoder sensors, and runs a target-position state machine
   driving button pulses.
 * Host tests pass under ASan/UBSan (`make test`). They cover a motor simulator with stock button
@@ -87,12 +87,12 @@ python3 tools/brunt_decode.py captures/04_stm32_status_pin21_up_down_sequence.lo
 
 ## Code map
 
-* `esphome/components/brunt/brunt_cover.{h,cpp}`: the component. Key invariant: **never press a
+* `components/brunt/brunt_cover.{h,cpp}`: the component. Key invariant: **never press a
   button again until the previous press is visible in the status** (`awaiting_` / `expect_`),
   because a second press of the running direction toggles the motor off or on. Presses time out
   after 1.3 s, with at most 3 start attempts. The move is cancelled if the motor stops without us
   asking (a limit, or someone pressed a physical button).
-* `esphome/components/brunt/cover.py`: config schema and codegen. It handles both `cover_schema`
+* `components/brunt/cover.py`: config schema and codegen. It handles both `cover_schema`
   and the older `COVER_SCHEMA`.
 * `test/sim.cpp` + `test/mock/`: mock ESPHome headers, a motor simulator and scenarios. Extend this
   when changing control logic, and keep all scenarios passing.
