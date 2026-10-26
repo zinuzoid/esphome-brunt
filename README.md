@@ -31,3 +31,6 @@ external_components:
 See `esphome/brunt-blind.yaml` for a full device config.
 
 See `CLAUDE.md` for status, open questions and the bring-up checklist.
+
+Brunt's own shutdown announcement, with an English translation, is in
+[`docs/brunt-shutdown-notice.md`](docs/brunt-shutdown-notice.md).
